@@ -1,0 +1,72 @@
+\documentclass[aspectratio=169,10pt,handout]{beamer}
+
+\usepackage[numbering=none,progressbar=foot]{WGUBeamer/beamerthemewgu}
+
+\title{WGUBeamer Demo}
+\subtitle{Wrexham Glyndŵr University \LaTeX~theme}
+\date{08/02/2019}
+\author{Jessica Muirhead}
+\institute{}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Demo outline}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{This theme}
+    \begin{itemize}
+        \item<1-> Provides a branded template using \LaTeX
+        \item<2-> You need to provide your own fonts -- see the \texttt{README.md for more information}
+        \item<3-> Optimised for XeLaTeX and Overleaf
+    \end{itemize}
+\end{frame}
+
+\section{Features}
+
+\begin{frame}{Maths}
+    \begin{itemize}
+        \item<1-> Including maths is easy:
+        $$ y = mx+c $$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Images}
+    \begin{center}
+        \includegraphics[width=40mm]{WGUBeamer/wgulogo.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Multi-column}
+    \begin{columns}
+        \begin{column}{0.5\linewidth}
+            \begin{itemize}
+                \item<1-> Supports multi-column layouts
+                \item<3-> Create slides with multiple elements
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\linewidth}
+            \begin{center}
+                \onslide<2->{\includegraphics[width=40mm]{WGUBeamer/wgulogo.png}}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Options}
+
+\begin{frame}[standout]
+    Works for 16:9 and 4:3 aspect ratios
+\end{frame}
+
+\begin{frame}{Demo outline}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\end{document}

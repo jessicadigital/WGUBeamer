@@ -22,3 +22,11 @@ XeLaTeX  | https://www.overleaf.com/](Overleaf) | Yes
 ## Presentation setup
 
 The template has been designed primarily for 16:9 (widescreen) mode, although it does work for traditional 4:3 formats.
+
+## How to use
+
+Download the full `.zip` package using the `Clone or download` button in the top right. You can then upload the entire `.zip` as a new project in Overleaf.
+
+Edit the `demo.tex` file to create your presentation. By default this uses 16:9 aspect ratio, you can change to 4:3 by deleting the `aspectratio=169` from the top of the source file.
+
+To prepare a `.pdf` for dissemination, add the option `handout` to the `documentclass`. Without this option, you will produce a stepped file including animation frames on every slide that is suitable for presentation.
