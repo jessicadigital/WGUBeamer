@@ -1,0 +1,137 @@
+%% -------------------
+%% Wrexham Glyndŵr University Beamer Template
+%% https://github.com/jessicadigital/WGUBeamer/
+%%
+%% Created by Jessica Muirhead based on the Metropolis (2017/01/23) and HSRM themes:
+%% https://github.com/matze/mtheme/
+%%
+%% This theme is licensed under a Creative Commons Attribution-ShareAlike 4.0
+%% International License (https://creativecommons.org/licenses/by-sa/4.0/),
+%% excluding the graphical elements that are the property of Wrexham Glyndŵr University.
+%% ---------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemewgu}
+  [2019/02/08 v1.0 Wrexham Glyndŵr University Beamer Template]
+\RequirePackage{etoolbox}
+\RequirePackage{pgfopts}
+
+% Circled numbers
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%nice tables
+\usepackage{tabularx}
+
+% Allow centred equal columns
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+%Fix image file names in graphicx
+\RequirePackage{grffile}
+
+% Custom enuermate numbering
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\setitemize{label=\usebeamerfont*{itemize item}%
+  \usebeamercolor[fg]{itemize item}
+  \usebeamertemplate{itemize item}}
+
+\pgfkeys{/metropolis/.cd,
+  .search also={
+    /metropolis/inner,
+    /metropolis/outer,
+    /metropolis/color,
+    /metropolis/font,
+  }
+}
+\pgfkeys{
+  /metropolis/titleformat plain/.cd,
+    .is choice,
+    regular/.code={%
+      \let\metropolis@plaintitleformat\@empty%
+      \setbeamerfont{standout}{shape=\normalfont}%
+    },
+    smallcaps/.code={%
+      \let\metropolis@plaintitleformat\@empty%
+      \setbeamerfont{standout}{shape=\scshape}%
+    },
+    allsmallcaps/.code={%
+      \let\metropolis@plaintitleformat\MakeLowercase%
+      \setbeamerfont{standout}{shape=\scshape}%
+      \PackageWarning{beamerthemewgu}{%
+        Be aware that titleformat plain=allsmallcaps can lead to problems%
+      }
+    },
+    allcaps/.code={%
+      \let\metropolis@plaintitleformat\MakeUppercase%
+      \setbeamerfont{standout}{shape=\normalfont}%
+      \PackageWarning{beamerthemewgu}{%
+        Be aware that titleformat plain=allcaps can lead to problems%
+      }
+    },
+}
+\pgfkeys{
+  /metropolis/titleformat/.code=\pgfkeysalso{
+      font/titleformat title=#1,
+      font/titleformat subtitle=#1,
+      font/titleformat section=#1,
+      font/titleformat frame=#1,
+      titleformat plain=#1,
+    }
+}
+\pgfkeys{/metropolis/.cd,
+  usetitleprogressbar/.code=\pgfkeysalso{outer/progressbar=frametitle},
+  noslidenumbers/.code=\pgfkeysalso{outer/numbering=none},
+  usetotalslideindicator/.code=\pgfkeysalso{outer/numbering=fraction},
+  nosectionslide/.code=\pgfkeysalso{inner/sectionpage=none},
+  darkcolors/.code=\pgfkeysalso{color/background=dark},
+  blockbg/.code=\pgfkeysalso{color/block=fill, inner/block=fill},
+}
+\newcommand{\metropolis@setdefaults}{
+  \pgfkeys{/metropolis/.cd,
+    titleformat plain=regular,
+  }
+}
+%\useinnertheme{wgu}
+%\useoutertheme{wgu}
+%\usecolortheme{wgu}
+%\usefonttheme{wgu}
+\usepackage{WGUBeamer/beamerinnerthemewgu}
+\usepackage{WGUBeamer/beamerouterthemewgu}
+\usepackage{WGUBeamer/beamercolorthemewgu}
+\usepackage{WGUBeamer/beamerfontthemewgu}
+\AtEndPreamble{%
+  \@ifpackageloaded{pgfplots}{%
+    \RequirePackage{pgfplotsthemetol}
+  }{}
+}
+\newcommand{\metroset}[1]{\pgfkeys{/metropolis/.cd,#1}}
+\def\metropolis@plaintitleformat#1{#1}
+\newcommand{\plain}[2][]{%
+  \PackageWarning{beamerthememetropolis}{%
+    The syntax `\plain' may be deprecated in a future version of Metropolis.
+    Please use a frame with [standout] instead.
+  }
+  \begin{frame}[standout]{#1}
+    \metropolis@plaintitleformat{#2}
+  \end{frame}
+}
+\newcommand{\mreducelistspacing}{\vspace{-\topsep}}
+\metropolis@setdefaults
+\ProcessPgfOptions{/metropolis}
+
+\setbeamertemplate{background canvas}{%
+    \includegraphics[width=\paperwidth,height=\paperheight]{WGUBeamer/slidebg.png}
+}
+
+\titlegraphic{\hfill\includegraphics[height=1cm]{WGUBeamer/wgulogo.png}}
+
+% Our emph will be bold and purple
+\let\emph\relax % there's no \RedeclareTextFontCommand
+\DeclareTextFontCommand{\emph}{\bfseries\color{WGUPurple}}
+
+\setbeamercovered{transparent}
+
+\linespread{1.3}
+
+\endinput

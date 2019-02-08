@@ -1,0 +1,141 @@
+%% -------------------
+%% Wrexham Glyndŵr University Beamer Template
+%% https://github.com/jessicadigital/WGUBeamer/
+%%
+%% Created by Jessica Muirhead based on the Metropolis (2017/01/23) and HSRM themes:
+%% https://github.com/matze/mtheme/
+%%
+%% This theme is licensed under a Creative Commons Attribution-ShareAlike 4.0
+%% International License (https://creativecommons.org/licenses/by-sa/4.0/),
+%% excluding the graphical elements that are the property of Wrexham Glyndŵr University.
+%% ---------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemewgu}[2019/02/08 v1.0 Wrexham Glyndŵr University Beamer Template]
+\RequirePackage{pgfopts}
+\pgfkeys{
+  /metropolis/color/block/.cd,
+    .is choice,
+    transparent/.code=\metropolis@block@transparent,
+    fill/.code=\metropolis@block@fill,
+}
+\pgfkeys{
+  /metropolis/color/background/.cd,
+    .is choice,
+    dark/.code=\metropolis@colors@dark,
+    light/.code=\metropolis@colors@light,
+}
+\newcommand{\metropolis@color@setdefaults}{
+  \pgfkeys{/metropolis/color/.cd,
+    background=light,
+    block=transparent,
+  }
+}
+
+\definecolor{WGURed}{HTML}{d0103a}
+\definecolor{WGUYellow}{HTML}{f2c72f}
+\definecolor{WGUAqua}{HTML}{3cbdce}
+\definecolor{WGUPink}{HTML}{d71f85}
+\definecolor{WGUBrown}{HTML}{96965f}
+\definecolor{WGUBlue}{HTML}{4060af}
+\definecolor{WGUOrange}{HTML}{e99100}
+\definecolor{WGUGreen}{HTML}{abc200}
+\definecolor{WGUPurple}{HTML}{7d0063}
+
+% OLD COLOURS
+\definecolor{mDarkBrown}{HTML}{604c38}
+\definecolor{mDarkTeal}{HTML}{23373b}
+\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{mLightGreen}{HTML}{14B03D}
+
+\newcommand{\metropolis@colors@dark}{
+  \setbeamercolor{normal text}{%
+    fg=black!2,
+    bg=black
+  }
+  \usebeamercolor[fg]{normal text}
+}
+\newcommand{\metropolis@colors@light}{
+  \setbeamercolor{normal text}{%
+    fg=black,
+    bg=black!2
+  }
+}
+\setbeamercolor{standout}{%
+  fg=white
+}
+\setbeamercolor{alerted text}{%
+  fg=WGUPurple
+}
+\setbeamercolor{example text}{%
+  fg=mLightGreen
+}
+\setbeamercolor{titlelike}{use=normal text, parent=normal text,fg=WGUPurple}
+\setbeamercolor{author}{use=normal text, parent=normal text}
+\setbeamercolor{date}{use=normal text, parent=normal text}
+\setbeamercolor{institute}{use=normal text, parent=normal text}
+\setbeamercolor{structure}{use=normal text, fg=normal text.fg}
+\setbeamercolor{palette primary}{%
+  use=normal text,
+  fg=white,
+  bg=white
+}
+\setbeamercolor{frametitle}{%
+  use=palette primary,
+  fg=WGUPurple,
+  bg=white
+}
+\setbeamercolor{progress bar}{%
+  use=alerted text,
+  fg=alerted text.fg,
+  bg=alerted text.fg!50!black!30
+}
+\setbeamercolor{title separator}{
+  fg=WGUPurple
+}
+\setbeamercolor{progress bar in head/foot}{%
+  use=progress bar,
+  parent=progress bar
+}
+\setbeamercolor{progress bar in section page}{
+  use=progress bar,
+  parent=progress bar
+}
+\newcommand{\metropolis@block@transparent}{
+  \setbeamercolor{block title}{%
+    use=normal text,
+    fg=normal text.fg,
+    bg=
+  }
+  \setbeamercolor{block body}{
+    bg=
+  }
+}
+\newcommand{\metropolis@block@fill}{
+  \setbeamercolor{block title}{%
+    use=normal text,
+    fg=normal text.fg,
+    bg=normal text.bg!80!fg
+  }
+  \setbeamercolor{block body}{
+    use={block title, normal text},
+    bg=block title.bg!50!normal text.bg
+  }
+}
+\setbeamercolor{block title alerted}{%
+    use={block title, alerted text},
+    bg=block title.bg,
+    fg=alerted text.fg
+}
+\setbeamercolor{block title example}{%
+    use={block title, example text},
+    bg=block title.bg,
+    fg=example text.fg
+}
+\setbeamercolor{block body alerted}{use=block body, parent=block body}
+\setbeamercolor{block body example}{use=block body, parent=block body}
+\setbeamercolor{footnote}{fg=normal text.fg!90}
+\setbeamercolor{footnote mark}{fg=.}
+\metropolis@color@setdefaults
+\ProcessPgfPackageOptions{/metropolis/color}
+\mode<all>
+\endinput
